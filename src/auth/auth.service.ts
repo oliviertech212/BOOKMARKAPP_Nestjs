@@ -37,12 +37,13 @@ export class AuthService{
 
          } catch (error) {
         
-    if (error.code === "23505") {
-        console.log("Email already exists.");
-        return { error: "Email already exists." };
-      } else {
-        return { error: "An error occurred while signing up." };
-      }
+    // if (error.code === "23505") {
+    //     console.log("Email already exists.");
+    //     return { error: "Email already exists." };
+    //   } else {
+    //     return { error: "An error occurred while signing up." };
+    //   }
+            console.log(error.message);
             
             
          }
