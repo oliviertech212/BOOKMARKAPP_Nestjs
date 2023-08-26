@@ -20,7 +20,7 @@ app.enableVersioning({
   .setTitle(`Olivieretch's BookmarkApp`)
   .setDescription('This is BookmarkApp') 
   .setVersion('1.0')
-  .addTag('cats')
+  .addTag('Bookmark&Authentcation')
   .addSecurity('token', {
     type: 'apiKey',
     scheme: 'api_key',
