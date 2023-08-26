@@ -6,7 +6,12 @@ import { GetUser } from 'src/auth/decorator';
 
 import { UserService } from './user.service';
 import { EditDto } from './dto';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
+import { ApiExtraModels,ApiBody } from '@nestjs/swagger';
+import { refs } from '@nestjs/swagger';
+
+@ApiBearerAuth()
 @UseGuards(JwtGuard) // use custom jwtGuard
 @Controller('users')
 export class UserController {
@@ -32,7 +37,17 @@ export class UserController {
      }
 
 
-
+     @ApiExtraModels(EditDto)
+      @ApiBody({
+        schema: {
+          oneOf: refs(EditDto),
+          example:{
+            "email":"oliviertech@yopmail.com",
+            "firstName":"oliviertech",
+            "lastName":"oliviertech",
+          }
+        },
+      })
      @Patch('update')
      edituser(@GetUser('id') userId:number,@Body() dto:EditDto){
         return this.userService.EditUser(userId,dto)
