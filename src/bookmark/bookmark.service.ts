@@ -4,8 +4,9 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable } from '@nestjs/common';
 import { BookmarkDto, EditBookmarkDto } from './dto';
-import { GetUser } from 'src/auth/decorator';
-import { Bookmark } from 'src/Entity/bookmark.entity';
+import { GetUser } from '../auth/decorator';
+import { JwtGuard } from '../auth/guard';
+import { Bookmark } from '../Entity/bookmark.entity';
 
 
 @Injectable()

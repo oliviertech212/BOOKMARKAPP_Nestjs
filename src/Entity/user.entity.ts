@@ -9,10 +9,10 @@ export class User {
     id: number
 
     @CreateDateColumn()
-    created_at: Date;
+    created_at?: Date;
   
     @UpdateDateColumn()
-    updated_at: Date;
+    updated_at?: Date;
 
     @Column()
     firstName: string
@@ -25,6 +25,7 @@ export class User {
 
     @Column({ unique: true })
     email: string 
+
 
     @OneToMany(() => Bookmark , (bookmark) => bookmark.user, { cascade: true })
     bookmark: Bookmark[];

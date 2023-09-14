@@ -3,7 +3,7 @@ import { AuthDto,LoginDto } from "./dto";
 
 import * as argon from 'argon2';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from "src/Entity/user.entity";
+import { User } from "../Entity/user.entity"
 import { Repository } from "typeorm";
 
 import { JwtService } from '@nestjs/jwt';
@@ -33,7 +33,7 @@ export class AuthService{
            const  user=this.userRepository.save(newUser)
            
             // return saved user
-            return {user};
+            return {user: user};
 
          } catch (error) {
         
@@ -70,7 +70,7 @@ export class AuthService{
         // return {user}
         const payload = { sub: user.id, user: user };
 
-        const secret = this.config.get('secret');
+        const secret = this.config.get('SECRET');
         return {
           access_token: await this.jwtService.signAsync(payload,{ expiresIn: '1h',secret: secret}),
         };
